@@ -1,10 +1,10 @@
 #include <SFML/Graphics.hpp>
+#include "Flower.h"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    sf::RenderWindow window(sf::VideoMode(800, 800), "Flower");
+    Flower flower(&window);
 
     while (window.isOpen())
     {
@@ -15,9 +15,10 @@ int main()
                 window.close(); 
         }
 
-        window.clear();
-        window.draw(shape);
+        window.clear(sf::Color(173, 216, 230));
+        flower.drawFlower();
         window.display();
     }
+
     return 0;
 }
