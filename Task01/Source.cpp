@@ -3,16 +3,15 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 800), "Flower");
+    sf::RenderWindow window(sf::VideoMode({ 800, 800 }), "Flower");
     Flower flower(&window);
 
     while (window.isOpen())
     {
-        sf::Event event;  
-        while (window.pollEvent(event))  
+        while (const std::optional event = window.pollEvent())
         {
-            if (event.type == sf::Event::Closed)
-                window.close(); 
+            if (event->is<sf::Event::Closed>())
+                window.close();
         }
 
         window.clear(sf::Color(173, 216, 230));
